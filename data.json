@@ -1,0 +1,13 @@
+"name" : {
+"firstName": "John",
+"lastName": "Doe"
+},
+"university": "Polytechnic University of the Philippines",
+"degree": "B.S.",
+"major": "Computer Engineering",
+"studentNumber": "2000-00000-MN-0",
+"email": "johndoe@example.com",
+"birthday": "September-19-1999",
+"private": {
+"password": "password"
+}
