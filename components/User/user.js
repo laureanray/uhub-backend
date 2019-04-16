@@ -24,17 +24,17 @@ router.post("/signup", (req, res, next) => {
     user
       .save()
       .then(result => {
-        if (result === user) res.status(201).send({ Message: "User Created" });
+        if (result === user) res.status(201).send({ message: "USER_CREATED" });
       })
       .catch(error => {
         if (error) {
           if (error.name === "ValidationError") {
-            res.status(400).send({ Message: "Validation Error" });
+            res.status(400).send({ message: "VALIDATION_ERROR" });
           } else if (error.name === "MongoError") {
             if (error.code === 11000) {
-              res.status(403).send({ Message: "Duplicate" });
+              res.status(403).send({ message: "DUPLICATE" });
             } else {
-              res.status(403).send({ Message: "MongoError" });
+              res.status(403).send({ message: "MONGO_ERROR" });
             }
           }
         }
@@ -48,7 +48,7 @@ router.post("/login", (req, res, next) => {
     .then(user => {
       if (user.length < 1) {
         return res.status(404).send({
-          message: "User doesnt Exist"
+          message: "USER_DOESNT_EXIST"
         });
       }
       bcrypt
@@ -66,18 +66,18 @@ router.post("/login", (req, res, next) => {
               }
             );
             return res.status(200).send({
-              message: "Authentication Successful",
+              message: "AUTH_SUCCESS",
               token: token
             });
           } else {
             return res.status(401).send({
-              message: "Wrong Password"
+              message: "WRONG_PASSWORD"
             });
           }
         })
         .catch(error => {
           return res.status(401).send({
-            message: "Authentication Failed"
+            message: "AUTH_FAILED"
           });
         });
     })
